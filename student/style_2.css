@@ -1,0 +1,137 @@
+    .page-title{
+        font-size: 22px;
+    }
+  .section-box {
+    background: #ffffff;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin: 25px 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* hiệu ứng hover nhẹ */
+  .section-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+  }
+
+  /* tiêu đề mỗi box */
+  .section-box h3 {
+    margin: 0 0 15px 0;
+    border-left: 5px solid #3498db;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  /* danh sách item trong box */
+  .section-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .section-box li {
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .section-box li:hover {
+    background: #f0f6ff;
+  }
+
+  /* link trong list */
+  .section-box a {
+    color: #2980b9;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .section-box a:hover {
+    text-decoration: underline;
+  }
+  /* ==== Box Nội dung học ==== */
+.opption {
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin: 25px 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.opption:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+  /* Tiêu đề lớn */
+  .opption h3 {
+    margin: 0 0 20px 0;
+    border-left: 5px solid #27ae60;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  /* Tiêu đề từng section */
+  .opption h4 {
+    margin: 18px 0 8px;
+    font-size: 16px;
+    color: #34495e;
+    font-weight: 600;
+    padding-left: 5px;
+  }
+
+  /* Danh sách bài học */
+  .opption ul {
+    list-style: none;
+    padding-left: 15px;
+    margin: 0 0 15px;
+    border-left: 2px dashed #ddd;
+  }
+
+  .opption li {
+    padding: 10px 12px;
+    margin: 6px 0;
+    border-radius: 6px;
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .opption li:hover {
+    background: #f0fdf4; /* xanh nhạt khi hover */
+  }
+
+  /* Link trong li */
+  .opption a {
+    color: #2980b9;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+  .opption a:hover {
+    text-decoration: underline;
+  }
+
+  /* Badge trạng thái */
+  .opption .status-done {
+    color: green;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+

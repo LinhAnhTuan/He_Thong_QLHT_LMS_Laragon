@@ -1,0 +1,19 @@
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;        /* chiều rộng sidebar */
+  height: 100%;
+  background: #2c3e50;
+  color: #fff;
+  padding-top: 20px;
+}
+
+/* Content */
+.content {
+  margin-left: 220px;  /* đẩy content sang phải 220px để không đè sidebar */
+  padding: 20px;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
