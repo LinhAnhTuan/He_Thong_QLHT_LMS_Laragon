@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("../../../config/db.php");
-require_once("../../includes/log_helper.php");
+require_once("../../../includes/log_helper.php");
 autoLogAction($pdo); // ✅ Tự động ghi log
 // Kiểm tra quyền admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {

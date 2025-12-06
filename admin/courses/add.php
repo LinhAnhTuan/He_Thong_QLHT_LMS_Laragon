@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("../../config/db.php");
-require_once("../includes/log_helper.php");
+require_once("../../includes/log_helper.php");
 autoLogAction($pdo); // ✅ Tự động ghi log
 
 // Kiểm tra quyền admin
@@ -57,9 +57,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>➕ Thêm khóa học</title>
-<link rel="stylesheet" href="../../style.css">
+    <meta charset="UTF-8">
+    <title>Thêm khóa học</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <?php include("../includes/sidebar2.php"); ?>
+    <div class="content">
+        <main class="main">
+            <form method="post" enctype="multipart/form-data">
+                <h1> Thêm khóa học</h1>
+                <?php if($error): ?><p class="error"><?= htmlspecialchars($error) ?></p><?php endif; ?>
+
+                <label>Tiêu đề khóa học:</label>
+                <input type="text" name="title" required>
+
+                <label>Giảng viên:</label>
+                <select name="teacher_id" required>
+                    <option value="">-- Chọn giảng viên --</option>
+                    <?php foreach($teachers as $t): ?>
+                        <option value="<?= $t['id'] ?>"><?= htmlspecialchars($t['name']) ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+                <label for="class_name">Lớp:</label>
+                <input type="text" id="class_name" name="class_name" placeholder="Nhập tên lớp">
+
+                <label>Mô tả:</label>
+                <textarea name="description" rows="4"></textarea>
+
+                <label>Ảnh cover:</label>
+                <input type="file" name="cover_image" accept="image/*">
+
+                <button type="submit">Thêm khóa học</button>
+                <a href="list.php" class="back-btn">🔙 Quay lại</a>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
 <style>
 main.main { padding:20px; font-family: Arial, sans-serif; background:#f4f6f9; min-height:90vh; display:flex; justify-content:center; align-items:center;}
 form { max-width:600px; background:#fff; padding:25px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);}
@@ -72,39 +108,3 @@ a.back-btn {display:inline-block; margin-top:10px; padding:10px 18px; background
 a.back-btn:hover {background:#0056b3;}
 .error {color:red; font-weight:bold; margin-bottom:10px;}
 </style>
-</head>
-<body>
-<?php include("../includes/sidebar2.php"); ?>
-<div class="content">
-<main class="main">
-<form method="post" enctype="multipart/form-data">
-    <h1>➕ Thêm khóa học</h1>
-    <?php if($error): ?><p class="error"><?= htmlspecialchars($error) ?></p><?php endif; ?>
-
-    <label>Tiêu đề khóa học:</label>
-    <input type="text" name="title" required>
-
-    <label>Giảng viên:</label>
-    <select name="teacher_id" required>
-        <option value="">-- Chọn giảng viên --</option>
-        <?php foreach($teachers as $t): ?>
-            <option value="<?= $t['id'] ?>"><?= htmlspecialchars($t['name']) ?></option>
-        <?php endforeach; ?>
-    </select>
-
-    <label for="class_name">Lớp:</label>
-    <input type="text" id="class_name" name="class_name" placeholder="Nhập tên lớp">
-
-    <label>Mô tả:</label>
-    <textarea name="description" rows="4"></textarea>
-
-    <label>Ảnh cover:</label>
-    <input type="file" name="cover_image" accept="image/*">
-
-    <button type="submit">Thêm khóa học</button>
-    <a href="list.php" class="back-btn">🔙 Quay lại</a>
-</form>
-</main>
-</div>
-</body>
-</html>

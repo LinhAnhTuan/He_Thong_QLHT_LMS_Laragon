@@ -1,8 +1,7 @@
 <?php
 require_once("../../config/db.php");
-require_once("../includes/log_helper.php");
+require_once("../../includes/log_helper.php");
 autoLogAction($pdo); // ✅ Tự động ghi log
-
 session_start();
 
 if ($_SESSION['role'] !== 'student') {
