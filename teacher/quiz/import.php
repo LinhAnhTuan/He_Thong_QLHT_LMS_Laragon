@@ -1,8 +1,6 @@
 <?php
 require_once("../../config/db.php");
-require '../../vendor/autoload.php'; // load PhpSpreadsheet + PHPWord
-require_once("../includes/log_helper.php");
-autoLogAction($pdo); // ✅ Tự động ghi log
+require '../../vendor/autoload.php'; 
 
 session_start();
 

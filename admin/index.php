@@ -47,14 +47,6 @@ $avatar = !empty($_SESSION['avatar']) ? "../" . $_SESSION['avatar'] : "../upload
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="../style.css">
-  <style>
-    .cards {display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-bottom:30px;}
-    .card {background:#f4f6f9; padding:20px; border-radius:10px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-    .card h2 {margin:10px 0; font-size:28px; color:#2c3e50;}
-    table {width:100%; border-collapse:collapse; background:#fff;}
-    table th, table td {border:1px solid #ddd; padding:10px; text-align:left;}
-    table th {background:#2c3e50; color:#fff;}
-  </style>
 </head>
 <body>
   <!-- SIDEBAR -->
@@ -125,3 +117,36 @@ $avatar = !empty($_SESSION['avatar']) ? "../" . $_SESSION['avatar'] : "../upload
   </div>
 </body>
 </html>
+  <style>
+    .cards {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); 
+      gap:20px; margin-bottom:30px;
+    }
+    .card {
+      background:#f4f6f9; 
+      padding:20px; 
+      border-radius:10px; 
+      text-align:center; 
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      margin:10px 0; 
+      font-size:28px; 
+      color:#2c3e50;
+    }
+    table {
+      width:100%; 
+      border-collapse:collapse; 
+      background:#fff;
+    }
+    table th, table td {
+      border:1px solid #ddd; 
+      padding:10px; 
+      text-align:left;
+    }
+    table th {
+      background:#2c3e50; 
+      color:#fff;
+    }
+  </style>
