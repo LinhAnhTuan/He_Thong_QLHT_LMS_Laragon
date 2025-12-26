@@ -2,7 +2,6 @@
 require_once("../config/db.php");
 session_start();
 
-/* ========= KIỂM TRA ĐĂNG NHẬP ========= */
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'student') {
     header("Location: ../../login.php");
     exit;
@@ -15,7 +14,6 @@ if ($course_id <= 0) {
     exit;
 }
 
-/* ========= KIỂM TRA THUỘC KHÓA ========= */
 $stmt = $pdo->prepare("
     SELECT c.*, u.name AS teacher
     FROM course_enrollments e
@@ -30,7 +28,6 @@ if (!$course) {
     exit;
 }
 
-/* ========= LẤY BÀI HỌC ========= */
 $stmt = $pdo->prepare("
     SELECT s.title AS section_title,
            l.id, l.title, l.content_type, l.content_link,
@@ -45,7 +42,7 @@ $stmt = $pdo->prepare("
 $stmt->execute([$studentId, $course_id]);
 $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-/* ========= DỮ LIỆU KHÁC ========= */
+
 $assignments = $pdo->query("SELECT * FROM assignments WHERE course_id=$course_id")->fetchAll();
 $quizzes     = $pdo->query("SELECT * FROM quizzes WHERE course_id=$course_id")->fetchAll();
 $schedules   = $pdo->query("SELECT * FROM schedules WHERE course_id=$course_id")->fetchAll();
@@ -73,7 +70,6 @@ $csrf_token = $_SESSION['csrf_token'];
         <h2>📚 <?= htmlspecialchars($course['title']) ?></h2>
         <p><b>Giảng viên:</b> <?= htmlspecialchars($course['teacher']) ?></p>
 
-        <!-- ================== BÀI HỌC ================== -->
         <div class="section-box">
         <h3>📖 Nội dung học</h3>
 
@@ -134,7 +130,7 @@ $csrf_token = $_SESSION['csrf_token'];
         <?php endforeach; ?>
         </ul>
         </div>
-        <!-- ================== BÀI TẬP ================== -->
+
         <div class="section-box">
             <h3>📂 Bài tập</h3>
 
@@ -152,7 +148,7 @@ $csrf_token = $_SESSION['csrf_token'];
             </ul>
             <?php endif; ?>
         </div>
-        <!-- ================== QUIZ ================== -->
+    
         <div class="section-box">
             <h3>❓ Quiz</h3>
 
@@ -171,7 +167,7 @@ $csrf_token = $_SESSION['csrf_token'];
             <?php endif; ?>
 
         </div>
-        <!-- ================== LỊCH HỌC ================== -->
+
         <div class="section-box">
             <h3>📅 Lịch học</h3>
 
@@ -197,7 +193,7 @@ $csrf_token = $_SESSION['csrf_token'];
     </div>
 </div>
 
-<!-- ========== POPUP CHECKPOINT ========== -->
+<!-- POPUP CHECKPOINT -->
 <div id="checkpointModal" class="checkpoint-modal hidden">
     <div class="checkpoint-box">
         <h3 id="cp-question"></h3>
@@ -207,7 +203,7 @@ $csrf_token = $_SESSION['csrf_token'];
 </div>
 
 <script>
-/* ===== Hoàn thành thủ công ===== */
+/*  Hoàn thành thủ công */
 document.querySelectorAll(".btn-done").forEach(btn=>{
     btn.onclick=()=>{
         fetch("mark_lesson.php",{
@@ -218,7 +214,7 @@ document.querySelectorAll(".btn-done").forEach(btn=>{
     };
 });
 
-/* ===== Video + Checkpoint ===== */
+/* Video + Checkpoint */
 document.querySelectorAll(".lesson-video").forEach(video=>{
 
 const checkpoints=[
@@ -285,7 +281,6 @@ function showCheckpoint(video,c,cb){
 </body>
 </html>
 <style>
-/* ====== SECTION BOX ====== */
 .section-box {
     background: #fff;
     border-radius: 12px;
@@ -301,7 +296,6 @@ function showCheckpoint(video,c,cb){
     padding-left: 10px;
 }
 
-/* ====== LESSON LIST ====== */
 .lesson-item {
     padding: 12px 0;
     border-bottom: 1px dashed #ddd;
@@ -310,7 +304,6 @@ function showCheckpoint(video,c,cb){
     gap: 6px;
 }
 
-/* ====== DETAILS ====== */
 .lesson-box {
     width: 100%;
 }
@@ -331,14 +324,12 @@ function showCheckpoint(video,c,cb){
     color: #4f46e5;
 }
 
-/* bỏ mũi tên mặc định */
+
 .lesson-summary::-webkit-details-marker {
     display: none;
 }
 
-/* icon toggle */
 .lesson-summary::after {
-    content: "⬇";
     margin-left: auto;
     font-size: 13px;
     opacity: .6;
@@ -348,13 +339,11 @@ function showCheckpoint(video,c,cb){
     content: "⬆";
 }
 
-/* ====== CONTENT ====== */
 .lesson-content {
     margin-top: 10px;
     margin-left: 20px;
 }
 
-/* ====== VIDEO ====== */
 .video-wrapper {
     display: flex;
     justify-content: center;
@@ -370,7 +359,6 @@ function showCheckpoint(video,c,cb){
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-/* ====== STATUS ====== */
 .lesson-status {
     font-size: 14px;
     margin-left: 20px;
@@ -382,7 +370,6 @@ function showCheckpoint(video,c,cb){
     font-weight: 600;
 }
 
-/* ====== BUTTON ====== */
 .btn-done {
     padding: 6px 14px;
     border-radius: 20px;
@@ -399,7 +386,6 @@ function showCheckpoint(video,c,cb){
     transform: translateY(-1px);
 }
 
-/* ====== LIST (ASSIGNMENT / QUIZ / SCHEDULE) ====== */
 .section-box ul {
     list-style: none;
     padding-left: 0;
@@ -426,7 +412,6 @@ function showCheckpoint(video,c,cb){
     text-decoration: underline;
 }
 
-/* ====== CHECKPOINT MODAL ====== */
 .checkpoint-modal {
     position: fixed;
     inset: 0;

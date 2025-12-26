@@ -109,7 +109,7 @@ $avatar = !empty($_SESSION['avatar']) ? "../../" . $_SESSION['avatar'] : "../../
             <?php foreach ($s['lessons'] as $l): ?>
   <div class="lesson-item">
     <div class="lesson-title" onclick="toggleLesson(<?= $l['id'] ?>)">
-      <?= $l['order_number'] ?>. <?= htmlspecialchars($l['title']) ?> ⬇
+      <?= $l['order_number'] ?>. <?= htmlspecialchars($l['title']) ?> 
     </div>
     <div class="lesson-content" id="lesson-<?= $l['id'] ?>">
       <?php if (!empty($l['content_link'])): ?>
@@ -281,7 +281,7 @@ function toggleLesson(id) {
   .lesson-content video,
   .lesson-content iframe {
     width: 100%;
-    height: 300px;
+    height: 500px;
     border-radius: 5px;
   }
 
